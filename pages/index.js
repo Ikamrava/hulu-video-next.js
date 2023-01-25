@@ -3,9 +3,12 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
+import Results from "@/components/Results";
+import requests from "../utils/request";
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Home(props) {
+  console.log(props);
   return (
     <>
       <Head>
@@ -17,7 +20,22 @@ export default function Home() {
       <main>
         <Header />
         <Navbar />
+        <Results />
       </main>
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  const genre = context.query.genre;
+  console.log(requests.fetchTrending.url);
+  const data = await fetch(
+    `https://api.themoviedb.org/3${requests.fetchTrending.url}`
+  ).then((res) => res.json());
+
+  return {
+    props: {
+      results: data.results,
+    },
+  };
 }
