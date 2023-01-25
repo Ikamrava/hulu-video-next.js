@@ -7,8 +7,8 @@ import Results from "@/components/Results";
 import requests from "../utils/request";
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home(props) {
-  console.log(props);
+export default function Home({ results }) {
+  // console.log(results);
   return (
     <>
       <Head>
@@ -20,7 +20,7 @@ export default function Home(props) {
       <main>
         <Header />
         <Navbar />
-        <Results />
+        <Results results={results} />
       </main>
     </>
   );
@@ -30,7 +30,9 @@ export async function getServerSideProps(context) {
   const genre = context.query.genre;
   console.log(requests.fetchTrending.url);
   const data = await fetch(
-    `https://api.themoviedb.org/3${requests.fetchTrending.url}`
+    `https://api.themoviedb.org/3${
+      requests[genre]?.url || requests.fetchTrending.url
+    }`
   ).then((res) => res.json());
 
   return {
