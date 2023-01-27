@@ -10,7 +10,7 @@ function info({ results }) {
       <Header />
       <Navbar />
 
-      <div className=" sm:m-10 sm:flex ">
+      <div className=" m-10 sm:flex ">
         <Image
           className=" object-cover"
           src={`https://image.tmdb.org/t/p/w500/${results.poster_path}`}
@@ -18,7 +18,7 @@ function info({ results }) {
           height={1920}
           alt="Poster"
         />
-        <div className=" ml-5 text-lg ">
+        <div className=" sm:ml-5 text-lg ">
           <div className="">
             <h2 className=" mt-1 text-2xl text-white transition-all duration-100 ease-in-out group-hover:font-bold">
               {results.title || results.original_name}
