@@ -99,6 +99,8 @@ export default info;
 export async function getServerSideProps(context) {
   const id = context.query.id;
   const media = context.query.media;
+  const genre = context.query.genre;
+  genre === null;
   const API_KEY = process.env.API_KEY;
 
   console.log(context);

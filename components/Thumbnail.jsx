@@ -1,8 +1,16 @@
 import Image from "next/image"
 import { HandThumbUpIcon } from "@heroicons/react/24/outline"
+import Link from "next/link"
 
 
 function Thumbnail({data}) {
+   const media = data.media_type
+   let href = ""
+   if(media){
+    href = `/info/${data.media_type}/${data.id}`
+   }else{
+    href = "#"
+   }
 
     function Upercase (str){
       const arr = str.split("")
@@ -10,6 +18,7 @@ function Thumbnail({data}) {
       return first+ arr.slice(1,arr.length).join("")
     }
   return (
+    <Link key={data.id} href = {href} >
     <div className=" group cursor-pointer p-2 transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50">
       <Image className=" object-cover" src={`https://image.tmdb.org/t/p/w500/${data.poster_path}`} width={1080} height={1920} alt="Poster"></Image>
       <div className=" p-2">
@@ -23,6 +32,7 @@ function Thumbnail({data}) {
         </p>
       </div>
     </div>
+    </Link>
   )
 }
 
