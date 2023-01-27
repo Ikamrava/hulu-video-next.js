@@ -3,9 +3,11 @@ import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
 import Results from "@/components/Results";
 import requests from "../utils/request";
-import Info from "@/components/Info";
+import { useState } from "react";
 
 export default function Home({ results }) {
+  const API_KEY = process.env.API_KEY;
+
   return (
     <>
       <Head>
@@ -18,7 +20,6 @@ export default function Home({ results }) {
         <Header />
         <Navbar />
         <Results results={results} />
-        <Info results={results} />
       </main>
     </>
   );

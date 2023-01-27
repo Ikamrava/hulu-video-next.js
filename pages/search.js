@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
-import Results from "@/components/Results";
 import { useState } from "react";
+import SearchCom from "@/components/SearchCom";
 
 export default function Search() {
   const API_KEY = process.env.API_KEY;
@@ -56,7 +56,7 @@ export default function Search() {
         </form>
 
         {results ? (
-          <Results results={results} />
+          <SearchCom results={results} />
         ) : (
           <div className="  ml-8 mt-5 text-2xl sm:ml-20 ">
             No Result for your search
