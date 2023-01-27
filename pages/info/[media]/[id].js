@@ -11,7 +11,7 @@ function info({ results }) {
       <Header />
       <Navbar />
 
-      <div className=" m-10 sm:m-20 sm:flex">
+      <div className=" m-10 sm:flex ">
         <Image
           className=" object-cover"
           src={`https://image.tmdb.org/t/p/w500/${results.poster_path}`}
@@ -19,7 +19,7 @@ function info({ results }) {
           height={1920}
           alt="Poster"
         />
-        <div className=" ml-5 text-lg">
+        <div className=" ml-5 text-lg ">
           <div className="">
             <h2 className=" mt-1 text-2xl text-white transition-all duration-100 ease-in-out group-hover:font-bold">
               {results.title || results.original_name}
@@ -29,10 +29,13 @@ function info({ results }) {
           </div>
 
           <div>
-            <div className="flex ">
-              <label className=" text-bold text-yellow-400">Genres: </label>
+            <div className=" ">
+              <label className=" text-bold text-yellow-400 ">Genres: </label>
               {results.genres.map((genre) => (
-                <p> {genre.name} .</p>
+                <p key={genre.name} className=" pl-3 ">
+                  {" "}
+                  {genre.name}
+                </p>
               ))}
             </div>
             <a
@@ -40,8 +43,8 @@ function info({ results }) {
               href={results.homepage}
               target="_blank"
             >
-              <span className=" text-bold text-yellow-400"> Home Page: </span>
-              {results.homepage}
+              <p className=" text-bold text-yellow-400"> Home Page: </p>
+              <span className=" pl-3">{results.homepage}</span>
             </a>
             <p>
               <span className=" text-bold text-yellow-400">
@@ -54,17 +57,19 @@ function info({ results }) {
                 Spoken Languages :
               </span>{" "}
               {results.spoken_languages.map((lan) => (
-                <span>{lan.english_name} .</span>
+                <span key={lan.english_name}>{lan.english_name} .</span>
               ))}
             </p>
-            <p>
-              <span className=" text-bold text-yellow-400">
+            <div>
+              <label className=" text-bold text-yellow-400">
                 Production Companies :
-              </span>{" "}
+              </label>
               {results.production_companies.map((lan) => (
-                <span>{lan.name} .</span>
+                <p key={lan.name} className=" pl-3">
+                  {lan.name}
+                </p>
               ))}
-            </p>
+            </div>
 
             <p>
               <span className=" text-bold text-yellow-400">RunTime: </span>
@@ -93,6 +98,7 @@ function info({ results }) {
 export default info;
 
 export async function getServerSideProps(context) {
+  const API_KEY = process.env.API_KEY;
   const id = context.query.id;
   const media = context.query.media;
 

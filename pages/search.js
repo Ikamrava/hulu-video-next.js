@@ -6,7 +6,6 @@ import SearchCom from "@/components/SearchCom";
 
 export default function Search() {
   const API_KEY = process.env.API_KEY;
-  console.log(API_KEY);
 
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
