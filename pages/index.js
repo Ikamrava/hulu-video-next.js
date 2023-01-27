@@ -7,7 +7,6 @@ import { useState } from "react";
 
 export default function Home({ results }) {
   const API_KEY = process.env.API_KEY;
-  console.log(results);
 
   return (
     <>
