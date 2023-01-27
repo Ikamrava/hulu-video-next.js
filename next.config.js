@@ -4,6 +4,9 @@ const nextConfig = {
 };
 
 module.exports = {
+  env: {
+    API_KEY: process.env.API_KEY,
+  },
   images: {
     remotePatterns: [
       {

@@ -1,14 +1,11 @@
 import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "@next/font/google";
 import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
 import Results from "@/components/Results";
 import requests from "../utils/request";
-const inter = Inter({ subsets: ["latin"] });
+import Info from "@/components/Info";
 
 export default function Home({ results }) {
-  // console.log(results);
   return (
     <>
       <Head>
@@ -21,6 +18,7 @@ export default function Home({ results }) {
         <Header />
         <Navbar />
         <Results results={results} />
+        <Info results={results} />
       </main>
     </>
   );
@@ -28,7 +26,7 @@ export default function Home({ results }) {
 
 export async function getServerSideProps(context) {
   const genre = context.query.genre;
-  console.log(requests.fetchTrending.url);
+
   const data = await fetch(
     `https://api.themoviedb.org/3${
       requests[genre]?.url || requests.fetchTrending.url
