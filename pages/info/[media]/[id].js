@@ -97,15 +97,15 @@ function info({ results }) {
 export default info;
 
 export async function getServerSideProps(context) {
-  const API_KEY = process.env.API_KEY;
   const id = context.query.id;
   const media = context.query.media;
+  const API_KEY = process.env.API_KEY;
 
   console.log(context);
 
   try {
     const data = await fetch(
-      `https://api.themoviedb.org/3/${media}/${id}?api_key=be8935fb06e457f12f0a29dd018848c6&language=en-US`
+      `https://api.themoviedb.org/3/${media}/${id}?api_key=${API_KEY}&language=en-US`
     ).then((res) => res.json());
     return {
       props: {
