@@ -5,7 +5,6 @@ import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 
 function info({ results }) {
-  console.log(results);
   return (
     <>
       <Header />
