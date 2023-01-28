@@ -10,26 +10,30 @@ function info({ results }) {
       <Header />
       <Navbar />
 
-      <div className=" m-10 sm:flex ">
+      <div className=" m-10 sm:flex  ">
         <Image
           className=" object-cover"
           src={`https://image.tmdb.org/t/p/w500/${results.poster_path}`}
-          width={400}
+          width={600}
           height={1920}
           alt="Poster"
         />
-        <div className=" sm:ml-5 text-lg ">
+        <div className=" sm:ml-5 text-lg sm:flex flex-col gap-3  ">
           <div className="">
-            <h2 className=" mt-1 text-2xl text-white transition-all duration-100 ease-in-out group-hover:font-bold">
+            <h2 className=" mt-1 text-2xl text-white transition-all duration-100 ease-in-out group-hover:font-bold sm:text-3xl pb-3 pt-3">
               {results.title || results.original_name}
             </h2>
-            <label className=" text-bold text-yellow-400">Overview:</label>
-            <p className=" max-w-md pl-3">{results.overview}</p>
+            <label className=" text-bold text-yellow-400 sm:text-2xl ">
+              Overview:
+            </label>
+            <p className=" max-w-md p-3 border-b-2 ">{results.overview}</p>
           </div>
 
           <div>
-            <div className=" ">
-              <label className=" text-bold text-yellow-400 ">Genres: </label>
+            <div className="border-b-2">
+              <label className=" text-bold text-yellow-400 pt-3 pb-2">
+                Genres:{" "}
+              </label>
               {results.genres.map((genre) => (
                 <p key={genre.name} className=" pl-3 ">
                   {" "}
@@ -42,7 +46,7 @@ function info({ results }) {
               href={results.homepage}
               target="_blank"
             >
-              <p className=" text-bold text-yellow-400"> Home Page: </p>
+              <p className=" text-bold text-yellow-400 pt-3"> Home Page: </p>
               <span className=" pl-3">{results.homepage}</span>
             </a>
             <p>
